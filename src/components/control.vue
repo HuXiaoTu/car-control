@@ -13,7 +13,7 @@
         </div>
         <!-- 左 暂停 右 -->
         <div>
-          <span @click="activeBtn">
+          <span @click="activeBtn($event, '/left')">
             <Back style="width: 10em; height: 10em;" />
           </span>
           <span
@@ -22,7 +22,7 @@
           >
             <VideoPause style="width: 10em; height: 10em;" />
           </span>
-          <span @click="activeBtn">
+          <span @click="activeBtn($event, '/right')">
             <Right style="width: 10em; height: 10em;" />
           </span>
         </div>
