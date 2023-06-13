@@ -20,6 +20,7 @@
               style="width: 25rem;"
               v-model="form.ip"
               placeholder="例:192.168.0.111"
+              @keydown.enter="submitForm"
             >
               <template #prepend>http://</template>
             </el-input>
@@ -47,7 +48,7 @@ import control from './control.vue';
 let formRef = ref(null);
 
 let form = ref({
-  ip: '',
+  ip: '192.168.0.111',
 })
 
 const rules = reactive({
