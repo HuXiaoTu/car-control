@@ -1,5 +1,14 @@
 <template>
   <div class="control">
+    <!-- 返回按钮 -->
+    <div
+      class="returnBtn"
+      @click="returnBtn"
+    >
+      <el-icon size="35">
+        <Fold />
+      </el-icon>
+    </div>
     <!-- 实时 视频展示区域 -->
     <div class="view"></div>
     <!-- 操作区域 -->
@@ -79,23 +88,29 @@ const btnList = [
 
 
 let props = defineProps({
-  ip: String,
+  url: String,
 })
-let url = 'http://' + props.ip;
+let url = props.url;
 
+// 手指按下
 const activeBtn = (e, type) => {
   e.currentTarget.classList.add('active');
   if (type === '/stop') return;
 
   axios({ url: url + type, method: 'get' });
 }
-
+// 手指抬起
 const entBtn = () => {
   let box = document.querySelector('.contentBox');
   let active = box.querySelector('.active');
   if (active) active.classList.remove('active');
 
   axios({ url: url + '/stop', method: 'get' });
+}
+
+// 点击返回
+const returnBtn = () => {
+  window.location.reload(true);
 }
 </script>
 
@@ -105,6 +120,12 @@ const entBtn = () => {
   height: 100vh;
   overflow: hidden;
   display: flex;
+
+  .returnBtn {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+  }
 
   .view {
     width: 50%;

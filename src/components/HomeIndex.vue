@@ -1,5 +1,10 @@
 <template>
-  <div class="homeIndex">
+  <div
+    class="homeIndex"
+    v-loading="loading"
+    element-loading-text="连接中..."
+    element-loading-background="rgba(122, 122, 122,0.9)"
+  >
     <!-- 初始化 -->
     <div
       class="inputBox"
@@ -22,7 +27,7 @@
               placeholder="例:192.168.0.111"
               @keydown.enter="submitForm"
             >
-              <template #prepend>http://</template>
+              <template #prepend>{{ form.agreement }}</template>
             </el-input>
           </el-form-item>
         </el-form>
@@ -36,33 +41,61 @@
     </div>
     <!-- 操作界面 -->
     <div v-else>
-      <control :ip="form.ip"></control>
+      <control :url="form.agreement + form.ip"></control>
     </div>
   </div>
 </template>
 
 <script setup>
+import axios from "axios";
 import { reactive, ref } from 'vue';
 import control from './control.vue';
 
+
 let formRef = ref(null);
-
 let form = ref({
-  ip: '192.168.0.111',
+  ip: '',
+  // 请求协议
+  agreement: 'http://'
 })
-
+// 验证规则
 const rules = reactive({
-  ip: { required: true, message: 'ip必须输入', trigger: 'blur' },
+  ip: [
+    { required: true, message: 'ip必须输入', trigger: 'blur' },
+  ],
 })
 
-let showPage = ref('init');
+// 先获取 缓存 
+let localhost = localStorage.getItem("oldId");
+if (localhost) form.value.ip = localhost;
 
+
+// 显示页面
+let showPage = ref('init');
+// loading
+let loading = ref(false);
 const submitForm = () => {
-  if (!formRef) return
   formRef.value.validate((valid, fields) => {
+
     if (valid) {
-      showPage.value = 'ready';
+      loading.value = true;
+      let { agreement, ip } = form.value;
+      axios({
+        url: agreement + ip, method: 'get',
+        headers: { 'pm-token': 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3IiwiaXNzIjoicG0udGVkYy5jb20iLCJpYXQiOjE2ODY3OTIzNzgsImV4cCI6MzE1ODAyMTMwNn0.JSrUNiC73EpVbvBaTqL7H6nmIbdipRG5cOIG9i0Z2rY' }
+      })
+        .then(() => {
+          loading.value = false;
+          showPage.value = 'ready';
+          // 存储IP
+          localStorage.setItem("oldId", form.value.ip);
+        })
+        .catch(() => {
+          loading.value = false;
+          alert('连接失败...')
+        })
     }
+
   })
 }
 
