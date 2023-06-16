@@ -2,18 +2,21 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
+import router from '@/router';
 
 const app = createApp(App);
 
-// 安装 Element-Plus
-import 'element-plus/dist/index.css';
-import ElementPlus from 'element-plus';
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
-app.use(ElementPlus, { locale: zhCn, size: 'large' });
-// 安装 Element-Plus 图标
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-    app.component(key, component)
+// 加载路由
+app.use(router);
+
+// 2. 引入组件样式
+import 'vant/lib/index.css';
+// 安装 vant
+import * as vantEles from 'vant';
+for (const [key, component] of Object.entries(vantEles)) {
+    // app.component(key, component)
+    app.use(component)
 }
+
 
 app.mount('#app')
