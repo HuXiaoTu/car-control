@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "iconXX"; /* Project id 4126880 */
+  src: url('iconfont.woff2?t=1686987364452') format('woff2'),
+       url('iconfont.woff?t=1686987364452') format('woff'),
+       url('iconfont.ttf?t=1686987364452') format('truetype');
+}
+
+.iconXX {
+  font-family: "iconXX" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-zhuye:before {
+  content: "\e635";
+}
+
+.icon-wifi:before {
+  content: "\e617";
+}
+
+.icon-ziyuanldpi:before {
+  content: "\e60b";
+}
+
+.icon-ziyuanldpi1:before {
+  content: "\e60c";
+}
+
+.icon-ziyuanldpi2:before {
+  content: "\e60d";
+}
+
+.icon-ziyuanldpi3:before {
+  content: "\e60e";
+}
+
+.icon-ziyuanldpi4:before {
+  content: "\e60f";
+}
+
+.icon-fanhui:before {
+  content: "\e72e";
+}
+
+.icon-bluetooth:before {
+  content: "\e954";
+}
+

@@ -7,10 +7,31 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes: [
         {
-            id: 'home',	// 唯一标识
-            title: 'Home page',    // 标题
-            path: '/',	// 页面地址
-            component: () => import('@/view/homePage.vue'),
+            id: 'head',
+            path: '/',
+            redirect: '/home',
+            children: [
+                {
+                    id: 'home',
+                    path: '/home',
+                    component: () => import('@/view/homePage.vue'),
+                },
+                {
+                    id: 'wifi',
+                    path: '/wifi',
+                    component: () => import('@/view/wifi/index.vue'),
+                },
+                {
+                    id: 'controlHome',
+                    path: '/controlHome',
+                    component: () => import('@/view/control/index.vue'),
+                },
+                {
+                    id: 'control',
+                    path: '/control',
+                    component: () => import('@/view/control/control.vue'),
+                },
+            ]
         }
     ],
 });

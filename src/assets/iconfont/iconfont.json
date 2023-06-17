@@ -1,0 +1,72 @@
+{
+  "id": "4126880",
+  "name": "carApp",
+  "font_family": "iconXX",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "604660",
+      "name": "主页",
+      "font_class": "zhuye",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "5222610",
+      "name": "wifi",
+      "font_class": "wifi",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "6207765",
+      "name": "向上",
+      "font_class": "ziyuanldpi",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "6207767",
+      "name": "向下",
+      "font_class": "ziyuanldpi1",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "6207769",
+      "name": "返回",
+      "font_class": "ziyuanldpi2",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "6207772",
+      "name": "向右",
+      "font_class": "ziyuanldpi3",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "6207773",
+      "name": "向左",
+      "font_class": "ziyuanldpi4",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "7193674",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e72e",
+      "unicode_decimal": 59182
+    },
+    {
+      "icon_id": "18169928",
+      "name": "bluetooth,蓝牙,传输",
+      "font_class": "bluetooth",
+      "unicode": "e954",
+      "unicode_decimal": 59732
+    }
+  ]
+}

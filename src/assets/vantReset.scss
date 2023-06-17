@@ -1,0 +1,10 @@
+// van-form 表单 错误提示信息重置
+.van-form {
+    .van-cell {
+        padding-bottom: 20px;
+    }
+
+    .van-field__error-message {
+        position: absolute;
+    }
+}

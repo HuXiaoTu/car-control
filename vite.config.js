@@ -13,7 +13,8 @@ export default defineConfig({
     }
   },
   server: {
-    host: '172.18.19.64',
+    // host: '192.168.1.3',
+    // host: '111.111.111.111',
     port: 8080,
     open: true,
   }
