@@ -105,16 +105,16 @@ const username = ref('');
 const password = ref('');
 // 连接
 const onSubmit = (values) => {
-    router.push({ path: '/control' })
-    // axios({
-    //     url: 'http://' + route.query.ipValue + '/HandleWifi', params: values, method: 'get',
-    // })
-    //     .then((res) => {
-    //         showSuccessToast('连接成功');
-    //     })
-    //     .catch(() => {
-    //         showFailToast('连接失败...');
-    //     })
+    axios({
+        url: 'http://' + route.query.ipValue + '/HandleWifi', params: values, method: 'get',
+    })
+        .then((res) => {
+            showSuccessToast('连接成功');
+            router.push({ path: '/controlHome' })
+        })
+        .catch(() => {
+            showFailToast('连接失败...');
+        })
 };
 
 let wifiList = ref([]);

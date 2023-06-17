@@ -3,7 +3,7 @@
     <div class="control">
         <!-- 主页按钮 -->
         <span
-            class="returnBtn iconXX icon-zhuye"
+            class="returnBtn iconXX icon-fanhui"
             @click="returnBtn"
         ></span>
         <!-- 表单 -->
