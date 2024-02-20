@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "972238",
+      "name": "遥控器",
+      "font_class": "switch-ykq",
+      "unicode": "e694",
+      "unicode_decimal": 59028
+    },
+    {
       "icon_id": "604660",
       "name": "主页",
       "font_class": "zhuye",

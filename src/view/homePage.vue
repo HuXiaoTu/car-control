@@ -24,6 +24,13 @@
                     @click="blueTooth"
                 ></span>
             </div>
+            <!-- 操作 -->
+            <div>
+                <span
+                    class="iconXX icon-switch-ykq"
+                    @click="handleCar"
+                ></span>
+            </div>
         </div>
     </div>
 </template>
@@ -38,12 +45,17 @@ let ipValue = ref('111.111.111.111');
 
 // wifi板块控制
 const wifi = () => {
-    router.push({ path: '/wifi', query: { ipValue: ipValue.value } })
+    router.push({ path: '/wifi', query: { ipValue: ipValue.value } });
 }
 
 // 蓝牙板块控制
 const blueTooth = () => {
     showNotify({ type: 'warning', message: '功能开发中...' });
+}
+
+// 小车控制
+const handleCar = () => {
+    router.push({ path: '/controlHome' });
 }
 
 </script>
