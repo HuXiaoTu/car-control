@@ -106,7 +106,7 @@ const password = ref('');
 // 连接
 const onSubmit = (values) => {
     axios({
-        url: 'http://' + route.query.ipValue + '/HandleWifi', params: values, method: 'get',
+        url: route.query.ipValue + '/HandleWifi', params: values, method: 'get',
     })
         .then((res) => {
             showSuccessToast('连接成功');
@@ -122,7 +122,7 @@ let scanLoading = ref(false);
 // 扫描wifi
 const scanWIFI = () => {
     scanLoading.value = true;
-    axios({ url: 'http://' + route.query.ipValue + '/HandleScanWifi', method: 'get', })
+    axios({ url: route.query.ipValue + '/HandleScanWifi', method: 'get', })
         .then((res) => {
             scanLoading.value = false;
             let data = res.data;

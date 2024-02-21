@@ -17,17 +17,15 @@ import './assets/vantReset.scss';
 import './assets/iconfont/iconfont.css';
 
 // 安装 vant
-// import * as vantEles from 'vant';
-// for (const [key, component] of Object.entries(vantEles)) {
-//     // app.component(key, component)
-//     app.use(component)
-// }
+// import vantEles from 'vant';
+// app.use(vantEles);
 
-import { Icon, Form, Field, CellGroup, Button } from 'vant';
+import { Icon, Form, Field, CellGroup, Button, Loading } from 'vant';
 app.use(Icon);
 app.use(Form);
 app.use(Field);
 app.use(CellGroup);
 app.use(Button);
+app.use(Loading);
 
 app.mount('#app')

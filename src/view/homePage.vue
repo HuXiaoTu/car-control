@@ -29,7 +29,19 @@
                 <span
                     class="iconXX icon-switch-ykq"
                     @click="handleCar"
+                    v-if="!isLoading"
                 ></span>
+                <van-loading
+                    vertical
+                    v-else
+                >
+                    <template #icon>
+                        <van-loading
+                            type="spinner"
+                            color="#1989fa"
+                        />
+                    </template>
+                </van-loading>
             </div>
         </div>
     </div>
@@ -37,15 +49,20 @@
 
 <script setup>
 import { ref } from 'vue';
-import { showNotify } from 'vant';
+import { showNotify, showSuccessToast } from 'vant';
 import { useRouter } from 'vue-router';
+import axios from "axios";
+import { computed } from 'vue';
 let router = useRouter();
 
 let ipValue = ref('111.111.111.111');
+let url = computed(() => {
+    return "http://" + ipValue.value;
+})
 
 // wifi板块控制
 const wifi = () => {
-    router.push({ path: '/wifi', query: { ipValue: ipValue.value } });
+    router.push({ path: '/wifi', query: { ipValue: url.value } });
 }
 
 // 蓝牙板块控制
@@ -54,8 +71,17 @@ const blueTooth = () => {
 }
 
 // 小车控制
+let isLoading = ref(false);
 const handleCar = () => {
-    router.push({ path: '/controlHome' });
+    isLoading.value = true;
+    axios({ url: url.value, method: 'get' }).then(() => {
+        isLoading.value = false;
+        showSuccessToast('连接成功~');
+        router.push({ path: '/control', query: { address: url.value } });
+    }).catch(() => {
+        isLoading.value = false;
+        showNotify({ type: 'warning', message: '连接失败,请检查IP地址是否正确!' });
+    });
 }
 
 </script>

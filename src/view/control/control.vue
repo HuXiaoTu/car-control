@@ -83,8 +83,7 @@ const btnList = [
   },
 ]
 
-
-let url = "http://" + route.query.address;
+let url = route.query.address;
 
 // 手指按下
 const activeBtn = (e, type) => {

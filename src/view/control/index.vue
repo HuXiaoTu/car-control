@@ -38,15 +38,18 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-let router = useRouter();
+import { useRouter, useRoute } from 'vue-router';
+const router = useRouter();
+const route = useRoute();
 
 // 返回
 const returnBtn = () => {
     history.back();
 }
 
-let IPaddress = ref('');
+// IP地址
+let IPaddress = ref(route.query.ipValue || '');
+
 // 连接
 const onSubmit = (values) => {
     router.push({ path: '/control', query: values });
