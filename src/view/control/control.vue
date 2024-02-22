@@ -1,104 +1,63 @@
 <template>
   <div class="control">
-    <!-- 返回按钮 -->
-    <div
-      class="returnBtn"
-      @click="returnBtn"
-    >
-      <span class="returnBtn iconXX icon-fanhui"></span>
-    </div>
-    <!-- 实时 视频展示区域 -->
-    <div class="view"></div>
-    <!-- 操作区域 -->
-    <div class="operate">
-      <div class="contentBox">
-        <span
-          class="btn"
-          v-for="item in btnList"
-          :key="url"
-          @touchstart="activeBtn($event, item.url)"
-          @touchend="entBtn"
-          :style="item.style"
-        >
-          <span :class="['iconXX', item.ele]"></span>
-        </span>
+    <!-- 顶部栏 -->
+    <div class="controlTop">
+      <div
+        class="returnBtn"
+        @click="returnBtn"
+      >
+        <van-icon
+          class="returnBtnIcon"
+          name="share"
+          size="30"
+        />
       </div>
+      <div style="margin: 0 0.3rem;  ">
+        <span>当前控制方式：</span>
+        <span style="display: inline-block; width: 4.5rem;">{{ selectRow.text }}</span>
+      </div>
+      <van-popover
+        v-model:show="showPopover"
+        :actions="options"
+        @select="onSelect"
+      >
+        <template #reference>
+          <van-icon
+            :class="[showPopover?'scale':'','selectPage']"
+            name="arrow-down"
+            size="20"
+          />
+        </template>
+      </van-popover>
     </div>
+    <!-- 控制方式 -->
+
+    <!-- 四个电机（无舵机） -->
+    <FourEngine v-if="selectRow.value === 1"></FourEngine>
+    <!-- 方向+动力 -->
+    <DirectionEngine v-else-if="selectRow.value === 2"></DirectionEngine>
+
   </div>
 </template>
 
 <script setup>
-import axios from "axios";
-import { useRoute } from "vue-router";
-let route = useRoute();
+import { ref } from 'vue';
+import FourEngine from './components/four_engine.vue';
+import DirectionEngine from './components/direction_engine.vue';
 
-const btnList = [
-  // 左转
-  {
-    url: '/left',
-    ele: 'icon-ziyuanldpi3',
-    style: { 'transform': 'rotateY(180deg)' }
-  },
-  // 前进
-  {
-    url: '/forward',
-    ele: 'icon-ziyuanldpi'
-  },
-  // 右转
-  {
-    url: '/right',
-    ele: 'icon-ziyuanldpi3',
-  },
-  // 左转圈
-  {
-    url: '/CLeft',
-    ele: 'icon-ziyuanldpi2'
-  },
-  // 停止
-  {
-    url: '/stop',
-    style: { 'pointer-events': 'none' }
-  },
-  // 右转圈
-  {
-    url: '/CRight',
-    ele: 'icon-ziyuanldpi2',
-    style: { 'transform': 'rotateY(180deg)' }
-  },
-  // 左后转
-  {
-    url: '/BLeft',
-    ele: 'icon-ziyuanldpi4'
-  },
-  // 后退
-  {
-    url: '/back',
-    ele: 'icon-ziyuanldpi1'
-  },
-  // 右后转
-  {
-    url: '/BRight',
-    ele: 'icon-ziyuanldpi4',
-    style: { 'transform': 'rotateY(180deg)' }
-  },
-]
 
-let url = route.query.address;
+const options = [
+  { text: '四个电机', value: 1 },
+  { text: '方向+动力', value: 2 },
+];
 
-// 手指按下
-const activeBtn = (e, type) => {
-  e.currentTarget.classList.add('active');
-  if (type === '/stop') return;
+let selectRow = ref({
+  text: '四个电机', value: 1
+});
 
-  axios({ url: url + type, method: 'get' });
-}
-// 手指抬起
-const entBtn = () => {
-  let box = document.querySelector('.contentBox');
-  let active = box.querySelector('.active');
-  if (active) active.classList.remove('active');
-
-  axios({ url: url + '/stop', method: 'get' });
+const showPopover = ref(false);
+const onSelect = (item) => {
+  selectRow.value = item;
 }
 
 // 点击返回
@@ -114,48 +73,29 @@ const returnBtn = () => {
   overflow: hidden;
   display: flex;
 
-  .returnBtn {
+  .controlTop {
     position: fixed;
-    top: 0.3rem;
-    left: 0.5rem;
-  }
-
-  .view {
-    width: 50%;
-    height: 100%;
-  }
-
-  .operate {
-    width: 50%;
-    height: 100%;
+    top: 0;
+    left: 0;
+    height: 35px;
     display: flex;
+    width: 50%;
     align-items: center;
-    justify-content: center;
 
-    .contentBox {
-      width: 20rem;
-      height: 20rem;
-      box-shadow: 0px 0px 5px 5px #cccccc;
-      border-radius: 1rem;
-      display: flex;
-      flex-wrap: wrap;
+    .returnBtn {
+      padding-left: 5px;
 
-      >span {
-        width: 33%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        span {
-          display: inline-block;
-          font-size: 3rem;
-        }
+      .returnBtnIcon {
+        transform: scaleX(-1);
       }
+    }
 
-      .active {
-        background-color: skyblue;
-        border-radius: 1rem;
-      }
+    .selectPage {
+      transition: transform 0.2s linear;
+    }
+
+    .scale {
+      transform: rotate(180deg);
     }
   }
 }

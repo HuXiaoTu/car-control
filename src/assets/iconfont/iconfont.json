@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "19168567",
+      "name": "刹车",
+      "font_class": "chache",
+      "unicode": "ea2e",
+      "unicode_decimal": 59950
+    },
+    {
+      "icon_id": "19175865",
+      "name": "方向向右-双",
+      "font_class": "arrow-",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
       "icon_id": "972238",
       "name": "遥控器",
       "font_class": "switch-ykq",

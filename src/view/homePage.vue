@@ -74,14 +74,17 @@ const blueTooth = () => {
 let isLoading = ref(false);
 const handleCar = () => {
     isLoading.value = true;
-    axios({ url: url.value, method: 'get' }).then(() => {
-        isLoading.value = false;
-        showSuccessToast('连接成功~');
-        router.push({ path: '/control', query: { address: url.value } });
-    }).catch(() => {
-        isLoading.value = false;
-        showNotify({ type: 'warning', message: '连接失败,请检查IP地址是否正确!' });
-    });
+
+    router.push({ path: '/control', query: { address: url.value } });
+
+    // axios({ url: url.value, method: 'get' }).then(() => {
+    //     isLoading.value = false;
+    //     showSuccessToast('连接成功~');
+    //     router.push({ path: '/control', query: { address: url.value } });
+    // }).catch(() => {
+    //     isLoading.value = false;
+    //     showNotify({ type: 'warning', message: '连接失败,请检查IP地址是否正确!' });
+    // });
 }
 
 </script>

@@ -20,12 +20,13 @@ import './assets/iconfont/iconfont.css';
 // import vantEles from 'vant';
 // app.use(vantEles);
 
-import { Icon, Form, Field, CellGroup, Button, Loading } from 'vant';
+import { Icon, Form, Field, CellGroup, Button, Loading, Popover } from 'vant';
 app.use(Icon);
 app.use(Form);
 app.use(Field);
 app.use(CellGroup);
 app.use(Button);
 app.use(Loading);
+app.use(Popover);
 
 app.mount('#app')
