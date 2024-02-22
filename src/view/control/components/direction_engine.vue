@@ -43,13 +43,17 @@
         .leftControlBtn {
             width: 100%;
             padding-left: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3.5rem;
 
             .iconXX {
                 display: inline-block;
-                font-size: 3rem;
+                font-size: 4rem;
                 width: 77px;
                 text-align: center;
+            }
+
+            .iconXX:active {
+                transform: scale(1.2);
             }
         }
     }
@@ -65,11 +69,11 @@
         .rightControlBtn {
             width: 77px;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 3.5rem;
 
             .iconXX {
                 display: inline-block;
-                font-size: 3rem;
+                font-size: 4rem;
                 text-align: center;
             }
         }
