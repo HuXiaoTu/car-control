@@ -5,19 +5,29 @@
                 <span
                     class="iconXX icon-arrow-"
                     style="transform: rotate(270deg);"
+                    @touchstart="activeBtn($event, '/right')"
+                    @touchend="entBtn('leftControlBtn')"
                 ></span>
                 <span
                     class="iconXX icon-arrow-"
                     style="transform: rotate(90deg);margin-left: 2rem;"
+                    @touchstart="activeBtn($event, '/left')"
+                    @touchend="entBtn('leftControlBtn')"
                 ></span>
             </div>
         </div>
         <div class="rightControl">
             <div class="rightControlBtn">
-                <span class="iconXX icon-arrow-"></span>
+                <span
+                    class="iconXX icon-arrow-"
+                    @touchstart="activeBtn($event, '/forward')"
+                    @touchend="entBtn('rightControlBtn')"
+                ></span>
                 <span
                     class="iconXX icon-arrow-"
                     style="transform: rotate(180deg);"
+                    @touchstart="activeBtn($event, '/back')"
+                    @touchend="entBtn('rightControlBtn')"
                 ></span>
             </div>
         </div>
@@ -25,6 +35,22 @@
 </template>
 
 <script setup>
+
+// 手指按下
+const activeBtn = (e, type) => {
+    e.currentTarget.classList.add('active');
+    // if (type === '/stop') return;
+
+    // axios({ url: url + type, method: 'get' });
+}
+// 手指抬起
+const entBtn = (boxClass = 'DirectionEngine') => {
+    let box = document.querySelector(`.${boxClass}`);
+    let active = box.querySelector('.active');
+    if (active) active.classList.remove('active');
+
+    // axios({ url: url + '/stop', method: 'get' });
+}
 
 </script>
 
@@ -47,7 +73,7 @@
 
             .iconXX {
                 display: inline-block;
-                font-size: 4rem;
+                font-size: 4.5rem;
                 width: 77px;
                 text-align: center;
             }
@@ -64,7 +90,7 @@
         display: flex;
         align-items: flex-end;
         justify-content: flex-end;
-        margin-right: 5rem;
+        margin-right: 6.5rem;
 
         .rightControlBtn {
             width: 77px;
@@ -72,11 +98,18 @@
             margin-bottom: 3.5rem;
 
             .iconXX {
+                width: 77px;
                 display: inline-block;
-                font-size: 4rem;
+                font-size: 4.5rem;
                 text-align: center;
             }
         }
+    }
+
+    .active {
+        background-color: skyblue;
+        // transform: scale(1.2);
+        border-radius: 1rem;
     }
 }
 </style>

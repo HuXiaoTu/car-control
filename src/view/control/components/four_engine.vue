@@ -128,6 +128,7 @@ const entBtn = () => {
 
         .active {
             background-color: skyblue;
+            // transform: scale(1.2);
             border-radius: 1rem;
         }
     }

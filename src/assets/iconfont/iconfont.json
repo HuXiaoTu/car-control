@@ -6,11 +6,11 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "19168567",
-      "name": "刹车",
-      "font_class": "chache",
-      "unicode": "ea2e",
-      "unicode_decimal": 59950
+      "icon_id": "37116717",
+      "name": "手柄2",
+      "font_class": "shoubing2",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
     },
     {
       "icon_id": "19175865",

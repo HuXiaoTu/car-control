@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconXX"; /* Project id 4126880 */
-  src: url('iconfont.woff2?t=1708569159895') format('woff2'),
-       url('iconfont.woff?t=1708569159895') format('woff'),
-       url('iconfont.ttf?t=1708569159895') format('truetype');
+  src: url('iconfont.woff2?t=1708578809187') format('woff2'),
+       url('iconfont.woff?t=1708578809187') format('woff'),
+       url('iconfont.ttf?t=1708578809187') format('truetype');
 }
 
 .iconXX {
@@ -13,8 +13,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-chache:before {
-  content: "\ea2e";
+.icon-shoubing2:before {
+  content: "\e61b";
 }
 
 .icon-arrow-:before {
