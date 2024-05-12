@@ -35,13 +35,15 @@
 </template>
 
 <script setup>
+import {useRoute} from 'vue-router';
+import axios from "axios";
+let route = useRoute();
+const url = route.query.address;
 
 // 手指按下
 const activeBtn = (e, type) => {
     e.currentTarget.classList.add('active');
-    // if (type === '/stop') return;
-
-    // axios({ url: url + type, method: 'get' });
+    axios({ url: url + type, method: 'get' });
 }
 // 手指抬起
 const entBtn = (boxClass = 'DirectionEngine') => {
@@ -49,7 +51,8 @@ const entBtn = (boxClass = 'DirectionEngine') => {
     let active = box.querySelector('.active');
     if (active) active.classList.remove('active');
 
-    // axios({ url: url + '/stop', method: 'get' });
+    if(boxClass== 'rightControlBtn')axios({ url: url + '/stop', method: 'get' });
+    else if(boxClass== 'leftControlBtn')axios({ url: url + '/normal', method: 'get' });
 }
 
 </script>
